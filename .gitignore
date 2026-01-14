@@ -1,0 +1,17 @@
+# Virtual environment
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+
+# OS
+.DS_Store
+
+# Claude
+.claude/
+
+# Build prompt
+Organizations_Explorer_Build_Prompt.md
