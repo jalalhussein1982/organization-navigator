@@ -109,7 +109,7 @@ def render_data_table(
     header_cols = st.columns([0.5, 2.5, 1.5, 1, 2, 1.5, 1.5])
 
     with header_cols[0]:
-        st.markdown("**Sel**")
+        st.button("Sel", key="header_sel", use_container_width=True)
     with header_cols[1]:
         render_sort_header("name_official", "Name", sort_column, sort_direction)
     with header_cols[2]:
@@ -117,11 +117,11 @@ def render_data_table(
     with header_cols[3]:
         render_sort_header("type_primary", "Type", sort_column, sort_direction)
     with header_cols[4]:
-        st.markdown("**Description**")
+        st.button("Description", key="header_desc", use_container_width=True)
     with header_cols[5]:
-        st.markdown("**Website**")
+        st.button("Website", key="header_website", use_container_width=True)
     with header_cols[6]:
-        st.markdown("**Actions**")
+        st.button("Actions", key="header_actions", use_container_width=True)
 
     st.divider()
 
