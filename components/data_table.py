@@ -157,7 +157,7 @@ def render_data_table(
 
         with row_cols[4]:
             description = org.get("description_en") or "-"
-            st.markdown(truncate_text(description, 150))
+            st.markdown(truncate_text(description, 200))
 
         with row_cols[5]:
             url = org.get("url_original")
