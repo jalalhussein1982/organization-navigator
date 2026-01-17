@@ -153,7 +153,7 @@ def render_data_table(
 
         with row_cols[3]:
             type_primary = org.get("type_primary") or "-"
-            st.markdown(type_primary.replace("_", " ").title()[:15])
+            st.markdown(type_primary.replace("_", " ").title()[:100])
 
         with row_cols[4]:
             description = org.get("description_en") or "-"
