@@ -150,7 +150,7 @@ def render_data_table(
 
         with row_cols[1]:
             name = org.get("name_official") or org.get("name_short") or "-"
-            st.markdown(f"**{truncate_text(name, 40)}**")
+            st.markdown(f"**{name}**")
 
         with row_cols[2]:
             city_country = format_city_country(org.get("city"), org.get("country_name"))
@@ -162,7 +162,7 @@ def render_data_table(
 
         with row_cols[4]:
             description = org.get("description_en") or "-"
-            st.markdown(truncate_text(description, 50))
+            st.markdown(truncate_text(description, 150))
 
         with row_cols[5]:
             url = org.get("url_original")
