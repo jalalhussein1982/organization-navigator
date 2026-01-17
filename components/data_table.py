@@ -97,11 +97,6 @@ def render_data_table(
     selected_rows = st.session_state.selected_rows
     expanded_row = st.session_state.expanded_row
 
-    # Pagination
-    render_pagination(total_count, current_page, per_page)
-
-    st.divider()
-
     if not organizations:
         st.info("No organizations found matching your criteria.")
         if st.button("Clear All Filters"):
@@ -192,3 +187,6 @@ def render_data_table(
             render_expanded_row(org_id)
 
         st.divider()
+
+    # Pagination at bottom
+    render_pagination(total_count, current_page, per_page)
