@@ -33,7 +33,16 @@ def render_pagination(total_count: int, current_page: int, per_page: int):
             st.markdown("No results found")
 
     with col2:
-        # Per page selector
+        # Per page selector with custom styling for dark mode
+        st.markdown("""
+            <style>
+            div[data-testid="column"] button[kind="primary"] {
+                background-color: #4CAF50 !important;
+                color: white !important;
+                border: none !important;
+            }
+            </style>
+        """, unsafe_allow_html=True)
         per_page_cols = st.columns(len(PER_PAGE_OPTIONS))
         for i, option in enumerate(PER_PAGE_OPTIONS):
             with per_page_cols[i]:
