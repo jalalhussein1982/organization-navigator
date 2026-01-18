@@ -4,7 +4,7 @@ import streamlit as st
 from typing import List, Dict, Any, Callable
 
 from config import PER_PAGE_OPTIONS
-from utils.helpers import truncate_text, format_url, format_city_country
+from utils.helpers import truncate_text, format_url
 from utils.session import (
     set_sort,
     toggle_row_selection,
@@ -115,7 +115,7 @@ def render_data_table(
     with header_cols[1]:
         render_sort_header("name_official", "Name", sort_column, sort_direction)
     with header_cols[2]:
-        render_sort_header("city", "City & Country", sort_column, sort_direction)
+        render_sort_header("city", "City", sort_column, sort_direction)
     with header_cols[3]:
         render_sort_header("type_primary", "Type", sort_column, sort_direction)
     with header_cols[4]:
@@ -150,8 +150,8 @@ def render_data_table(
             st.markdown(f"**{name}**")
 
         with row_cols[2]:
-            city_country = format_city_country(org.get("city"), org.get("country_name"))
-            st.markdown(truncate_text(city_country, 25))
+            city = org.get("city") or "-"
+            st.markdown(truncate_text(city, 25))
 
         with row_cols[3]:
             type_primary = org.get("type_primary") or "-"
