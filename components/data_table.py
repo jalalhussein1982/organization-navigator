@@ -121,7 +121,7 @@ def render_data_table(
     with header_cols[4]:
         st.button("Description", key="header_desc", use_container_width=True, disabled=True)
     with header_cols[5]:
-        st.button("Website", key="header_website", use_container_width=True, disabled=True)
+        st.button("Website-Email", key="header_website", use_container_width=True, disabled=True)
     with header_cols[6]:
         st.button("Actions", key="header_actions", use_container_width=True, disabled=True)
 
@@ -163,11 +163,14 @@ def render_data_table(
 
         with row_cols[5]:
             url = org.get("url_original")
+            email = org.get("email_primary")
+            lines = []
             if url:
                 display_url = format_url(url, 20)
-                st.markdown(f"[{display_url}]({url})")
-            else:
-                st.markdown("-")
+                lines.append(f"[{display_url}]({url})")
+            if email:
+                lines.append(email)
+            st.markdown("  \n".join(lines) if lines else "-")
 
         with row_cols[6]:
             if st.button("Edit", key=f"edit_{org_id}", help="Edit organization", use_container_width=True):
