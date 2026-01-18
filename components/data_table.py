@@ -53,32 +53,19 @@ def render_pagination(total_count: int, current_page: int, per_page: int):
     with col3:
         # Page navigation
         if total_pages > 1:
-            nav_cols = st.columns([1, 2, 1])
-
-            with nav_cols[0]:
-                if st.button("<", disabled=current_page <= 1, key="prev_page"):
-                    set_page(current_page - 1)
-                    st.rerun()
-
-            with nav_cols[1]:
-                # Page number input
-                new_page = st.number_input(
-                    "Page",
-                    min_value=1,
-                    max_value=total_pages,
-                    value=current_page,
-                    key="page_input",
-                    label_visibility="collapsed",
-                )
-                if new_page != current_page:
-                    set_page(new_page)
-                    st.rerun()
-                st.caption(f"of {total_pages}")
-
-            with nav_cols[2]:
-                if st.button(">", disabled=current_page >= total_pages, key="next_page"):
-                    set_page(current_page + 1)
-                    st.rerun()
+            # Page number input
+            new_page = st.number_input(
+                "Page",
+                min_value=1,
+                max_value=total_pages,
+                value=current_page,
+                key="page_input",
+                label_visibility="collapsed",
+            )
+            if new_page != current_page:
+                set_page(new_page)
+                st.rerun()
+            st.caption(f"of {total_pages}")
 
 
 def render_sort_header(column: str, display_name: str, current_sort: str, sort_dir: str):
