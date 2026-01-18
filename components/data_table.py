@@ -37,9 +37,8 @@ def render_pagination(total_count: int, current_page: int, per_page: int):
         st.markdown("""
             <style>
             div[data-testid="column"] button[kind="primary"] {
-                background-color: #4CAF50 !important;
-                color: white !important;
-                border: none !important;
+                border: 2px solid #4A90D9 !important;
+                background-color: transparent !important;
             }
             </style>
         """, unsafe_allow_html=True)
