@@ -24,24 +24,29 @@ def render_pagination(total_count: int, current_page: int, per_page: int):
     start_idx = (current_page - 1) * per_page + 1
     end_idx = min(current_page * per_page, total_count)
 
+    # CSS for vertical alignment and button styling
+    st.markdown("""
+        <style>
+        div[data-testid="column"] button[kind="primary"] {
+            border: 2px solid #4A90D9 !important;
+            background-color: transparent !important;
+        }
+        .aligned-text {
+            margin-top: 8px;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
     col1, col2, col3 = st.columns([2, 2, 2])
 
     with col1:
         if total_count > 0:
-            st.markdown(f"Showing **{start_idx:,}-{end_idx:,}** of **{total_count:,}** results")
+            st.markdown(f'<p class="aligned-text">Showing <b>{start_idx:,}-{end_idx:,}</b> of <b>{total_count:,}</b> results</p>', unsafe_allow_html=True)
         else:
-            st.markdown("No results found")
+            st.markdown('<p class="aligned-text">No results found</p>', unsafe_allow_html=True)
 
     with col2:
-        # Per page selector with custom styling for dark mode
-        st.markdown("""
-            <style>
-            div[data-testid="column"] button[kind="primary"] {
-                border: 2px solid #4A90D9 !important;
-                background-color: transparent !important;
-            }
-            </style>
-        """, unsafe_allow_html=True)
+        # Per page selector
         per_page_cols = st.columns(len(PER_PAGE_OPTIONS))
         for i, option in enumerate(PER_PAGE_OPTIONS):
             with per_page_cols[i]:
@@ -67,7 +72,7 @@ def render_pagination(total_count: int, current_page: int, per_page: int):
                     set_page(new_page)
                     st.rerun()
             with page_cols[1]:
-                st.markdown(f"of {total_pages}")
+                st.markdown(f'<p class="aligned-text">of {total_pages}</p>', unsafe_allow_html=True)
 
 
 def render_sort_header(column: str, display_name: str, current_sort: str, sort_dir: str):
