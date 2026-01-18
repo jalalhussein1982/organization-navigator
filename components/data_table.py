@@ -163,7 +163,7 @@ def render_data_table(
 
         with row_cols[5]:
             url = org.get("url_original")
-            email = org.get("email_primary")
+            email = org.get("email")
             lines = []
             if url:
                 display_url = format_url(url, 20)
