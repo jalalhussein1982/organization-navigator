@@ -170,7 +170,7 @@ def render_data_table(
                 lines.append(f"[{display_url}]({url})")
             if email:
                 lines.append(email)
-            st.markdown("  \n".join(lines) if lines else "-")
+            st.markdown("  \n  \n".join(lines) if lines else "-")
 
         with row_cols[6]:
             if st.button("Edit", key=f"edit_{org_id}", help="Edit organization", use_container_width=True):
