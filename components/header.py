@@ -23,8 +23,8 @@ def render_header(total_records: int = 0):
     col1, col2 = st.columns([2, 2])
 
     with col1:
-        # Create options for selectbox
-        options = list(available_dbs.keys())
+        # Create options for selectbox, sorted alphabetically by country name
+        options = sorted(available_dbs.keys(), key=lambda code: available_dbs[code]['name'])
         display_options = [
             f"{available_dbs[code]['flag']} {available_dbs[code]['name']}"
             for code in options
