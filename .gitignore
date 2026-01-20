@@ -15,3 +15,6 @@ __pycache__/
 
 # Build prompt
 Organizations_Explorer_Build_Prompt.md
+
+# temp database files
+db/temp/
